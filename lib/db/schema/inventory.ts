@@ -126,6 +126,27 @@ export const products = pgTable('products', {
   defaultGstRate: decimal('default_gst_rate', { precision: 5, scale: 2 }), // 5.00, 12.00, 18.00, 28.00
   defaultPurchaseTaxId: uuid('default_purchase_tax_id'),
   defaultSalesTaxId: uuid('default_sales_tax_id'),
+  // Metal-specific attributes for Leo Metals
+  metalGrade: varchar('metal_grade', { length: 100 }), // e.g., 'A36', '304', '316L', 'MS', 'SS'
+  metalAlloyType: varchar('metal_alloy_type', { length: 100 }), // e.g., 'Steel', 'Aluminum', 'Copper', 'Stainless Steel'
+  metalThickness: decimal('metal_thickness', { precision: 15, scale: 4 }), // in millimeters
+  metalWidth: decimal('metal_width', { precision: 15, scale: 4 }), // in millimeters or meters
+  metalLength: decimal('metal_length', { precision: 15, scale: 4 }), // in millimeters or meters
+  metalDiameter: decimal('metal_diameter', { precision: 15, scale: 4 }), // in millimeters (for rods, pipes)
+  metalFinish: varchar('metal_finish', { length: 100 }), // e.g., 'Polished', 'Matte', 'Galvanized', 'Painted'
+  metalForm: varchar('metal_form', { length: 100 }), // e.g., 'Sheet', 'Plate', 'Rod', 'Tube', 'Pipe', 'Coil', 'Bar'
+  weightPerUnit: decimal('weight_per_unit', { precision: 15, scale: 4 }), // weight in kg per unit
+  weightCalculationFormula: text('weight_calculation_formula'), // formula for calculating weight
+  metalCertification: varchar('metal_certification', { length: 255 }), // e.g., 'ISO 9001', 'CE Mark', 'BIS Certification'
+  metalTestCertificate: varchar('metal_test_certificate', { length: 255 }), // mill test certificate number
+  metalHeatTreatment: varchar('metal_heat_treatment', { length: 100 }), // e.g., 'Annealed', 'Tempered', 'Hardened'
+  metalCoating: varchar('metal_coating', { length: 100 }), // e.g., 'Zinc', 'Chrome', 'Nickel'
+  carbonContent: decimal('carbon_content', { precision: 5, scale: 3 }), // percentage of carbon content
+  metalDensity: decimal('metal_density', { precision: 15, scale: 6 }), // density in g/cm³ or kg/m³
+  metalCountryOfOrigin: varchar('metal_country_of_origin', { length: 100 }), // country where metal was manufactured
+  metalManufacturer: varchar('metal_manufacturer', { length: 255 }), // manufacturer/mill name
+  isScrapMaterial: boolean('is_scrap_material').default(false), // whether this is scrap/waste material
+  metalSurfaceTreatment: varchar('metal_surface_treatment', { length: 100 }), // e.g., 'Polished', 'Brushed', 'Sandblasted'
   imageUrl: text('image_url'),
   isActive: boolean('is_active').default(true),
   reorderPoint: decimal('reorder_point', { precision: 15, scale: 2 }).default('0'),
