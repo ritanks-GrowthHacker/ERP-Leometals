@@ -10,7 +10,7 @@ const pool = new Pool({
  * PUT /api/erp/finance/accounting/journal-entries/[id]/post
  * Post a draft journal entry (make it permanent)
  */
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { user, error } = await requireErpAccess(req, 'user');
   if (error) return error;
 
@@ -22,7 +22,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 
   try {
-    const journalId = params.id;
+    const { id: journalId } = await params;
 
     // Check ownership and status
     const jeCheck = await pool.query(

@@ -10,12 +10,12 @@ const pool = new Pool({
  * GET /api/erp/finance/invoices/sales/[id]
  * Get single sales invoice with all line items
  */
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { user, error } = await requireErpAccess(req);
   if (error) return error;
 
   try {
-    const invoiceId = params.id;
+    const { id: invoiceId } = await params;
 
     const invoiceResult = await pool.query(
       `SELECT 
@@ -75,7 +75,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
  * PUT /api/erp/finance/invoices/sales/[id]
  * Update invoice status or mark as sent
  */
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { user, error } = await requireErpAccess(req, 'user');
   if (error) return error;
 
@@ -87,7 +87,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 
   try {
-    const invoiceId = params.id;
+    const { id: invoiceId } = await params;
     const body = await req.json();
     const { status, irnDetails } = body;
 

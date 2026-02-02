@@ -5,7 +5,7 @@ import { sql } from 'drizzle-orm';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getErpUserFromToken(req);
@@ -18,7 +18,7 @@ export async function GET(
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    const { id: warehouseId } = params;
+    const { id: warehouseId } = await params;
 
     // Verify warehouse belongs to manager
     if (warehouseId !== user.warehouseId) {
@@ -59,7 +59,7 @@ export async function GET(
 
 export async function POST(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getErpUserFromToken(req);
@@ -72,8 +72,7 @@ export async function POST(
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    const params = await context.params;
-    const { id: warehouseId } = params;
+    const { id: warehouseId } = await params;
 
     // Verify warehouse belongs to manager
     if (warehouseId !== user.warehouseId) {

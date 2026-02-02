@@ -6,13 +6,23 @@ import crypto from 'crypto';
 // RAZORPAY_KEY_ID=your_key_id
 // RAZORPAY_KEY_SECRET=your_key_secret
 
-export const razorpayInstance = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID || '',
-  key_secret: process.env.RAZORPAY_KEY_SECRET || '',
-});
+// Only initialize Razorpay if credentials are provided
+export const razorpayInstance = process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET
+  ? new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    })
+  : null;
 
 // Create payment order
 export async function createRazorpayOrder(amount: number, currency: string = 'INR', receipt: string, notes?: any) {
+  if (!razorpayInstance) {
+    return {
+      success: false,
+      error: 'Razorpay is not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET environment variables.',
+    };
+  }
+
   try {
     const options = {
       amount: amount * 100, // Razorpay expects amount in paise
@@ -57,6 +67,13 @@ export function verifyRazorpaySignature(
 
 // Fetch payment details
 export async function fetchPaymentDetails(paymentId: string) {
+  if (!razorpayInstance) {
+    return {
+      success: false,
+      error: 'Razorpay is not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET environment variables.',
+    };
+  }
+
   try {
     const payment = await razorpayInstance.payments.fetch(paymentId);
     return {
@@ -74,6 +91,13 @@ export async function fetchPaymentDetails(paymentId: string) {
 
 // Create refund
 export async function createRefund(paymentId: string, amount?: number) {
+  if (!razorpayInstance) {
+    return {
+      success: false,
+      error: 'Razorpay is not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET environment variables.',
+    };
+  }
+
   try {
     const options: any = {
       payment_id: paymentId,
