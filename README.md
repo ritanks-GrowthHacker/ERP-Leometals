@@ -1,4 +1,4 @@
-# 🏗️ Complete ERP System Architecture & Design Documentation
+# 🏗️ Leo Metals ERP System - Complete Architecture & Design Documentation
 
 ## 📋 Table of Contents
 
@@ -11,11 +11,11 @@
 
 ## 🎯 System Overview
 
-I've built a complete **Enterprise Resource Planning (ERP) system** that manages end-to-end business operations for small to medium-sized enterprises. Think of it as the central nervous system for a business - everything connects through it.
+This is a complete **Enterprise Resource Planning (ERP) system** specifically designed for **Leo Metals**, managing end-to-end business operations for the metal industry. Think of it as the central nervous system for Leo Metals' business operations - everything connects through it.
 
 
-**My Solution:**
-A unified platform where everything talks to each other - when you sell a product, inventory updates automatically. When stock is low, the system suggests what to buy. When you receive goods, it updates costs and creates bills automatically.
+**The Solution:**
+A unified platform where everything talks to each other - when you sell metal products, inventory updates automatically. When stock is low, the system suggests what to buy. When you receive goods, it updates costs and creates bills automatically. Designed specifically for metal industry requirements including alloy tracking, weight-based measurements, and metal-specific quality certifications.
 
 ---
 

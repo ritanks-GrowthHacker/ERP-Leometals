@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ERP System - Enterprise Resource Planning",
-  description: "Modern ERP system for managing inventory, purchasing, sales, and manufacturing",
+  title: "Leo Metals ERP - Enterprise Resource Planning",
+  description: "Complete ERP solution for Leo Metals - managing inventory, purchasing, sales, and manufacturing operations",
 };
 
 export default function RootLayout({
