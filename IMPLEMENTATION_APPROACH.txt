@@ -1,0 +1,1 @@
+Bussiness Logic -> Odoo Logic -> Automation Flow -> Flow trigger -> Flo trigger response -> response Analysis -> Analysis based result 
