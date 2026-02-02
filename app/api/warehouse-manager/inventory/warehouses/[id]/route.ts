@@ -6,7 +6,7 @@ import { eq, and } from 'drizzle-orm';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getErpUserFromToken(req);
@@ -19,7 +19,7 @@ export async function GET(
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Verify warehouse belongs to manager
     if (id !== user.warehouseId) {
@@ -49,7 +49,7 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getErpUserFromToken(req);
@@ -62,7 +62,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Verify warehouse belongs to manager
     if (id !== user.warehouseId) {

@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#ignore all markdown files
+#ignore all markdown files except documentation
 *.md
 !README.md
+!DEPLOYMENT_GUIDE.md
+!LEO_METALS_FEATURES.md
+!SUMMARY.md

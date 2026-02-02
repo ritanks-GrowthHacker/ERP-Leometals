@@ -138,7 +138,7 @@ export default function ErpLayout({
                 <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
                   <span className="text-white text-sm font-bold">ER</span>
                 </div>
-                <span className="text-gray-900 dark:text-white font-semibold text-lg">ERP System</span>
+                <span className="text-gray-900 dark:text-white font-semibold text-lg">Leo Metals ERP</span>
               </div>
             )}
             <button 

@@ -209,18 +209,18 @@ export default function LoginPage() {
               <Icons.Inventory />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">ERP System</h1>
-              <p className="text-sm text-blue-200">Enterprise Resource Planning</p>
+              <h1 className="text-2xl font-bold text-white">Leo Metals ERP</h1>
+              <p className="text-sm text-blue-200">Metal Industry Solutions</p>
             </div>
           </div>
         </div>
 
         <div className="relative z-10 space-y-6">
           <h2 className="text-4xl font-bold text-white leading-tight">
-            Streamline Your Business Operations
+            Streamline Your Metal Business Operations
           </h2>
           <p className="text-lg text-blue-100">
-            Manage inventory, purchasing, sales, and manufacturing all in one powerful platform.
+            Complete ERP solution designed specifically for Leo Metals - manage inventory, purchasing, sales, and manufacturing with precision.
           </p>
           
           {/* Features */}
@@ -241,7 +241,7 @@ export default function LoginPage() {
         </div>
 
         <div className="relative z-10 text-blue-200 text-sm">
-          © 2026 ERP System. All rights reserved.
+          © 2026 Leo Metals ERP. All rights reserved.
         </div>
       </div>
 
@@ -255,8 +255,8 @@ export default function LoginPage() {
                 <Icons.Inventory />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-text-primary">ERP System</h1>
-                <p className="text-xs text-text-muted">Enterprise Solution</p>
+                <h1 className="text-xl font-bold text-text-primary">Leo Metals ERP</h1>
+                <p className="text-xs text-text-muted">Metal Industry Solution</p>
               </div>
             </div>
           </div>
